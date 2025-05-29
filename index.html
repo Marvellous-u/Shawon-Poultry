@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PurePoultry Direct - Fresh Halal Poultry Livestock Delivered</title>
+<style>
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #faf8f3;
+    color: #333;
+  }
+  a, button {
+    color: #d1495b;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  a:hover, button:hover {
+    color: #341f1f;
+  }
+  button:focus, a:focus {
+    outline: 2px solid #d1495b;
+    outline-offset: 2px;
+  }
+
+  /* Header */
+  header {
+    background: #d1495b;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(209,73,91,0.4);
+  }
+  .logo {
+    font-weight: 900;
+    font-size: 1.8rem;
+    font-family: 'Brush Script MT', cursive, sans-serif;
+    letter-spacing: 1.8px;
+    display: flex;
+    align-items: center;
+  }
+  .logo .feather {
+    font-size: 2.6rem;
+    margin-right: 0.5rem;
+  }
+  nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+  nav button {
+    font-size: 1rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 5px;
+    background-color: rgba(255 255 255 / 0.85);
+    color: #d1495b;
+    box-shadow: 0 3px 8px rgb(209 73 91 / 0.3);
+    font-weight: 700;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  nav button:hover {
+    background-color: #f9c784;
+    color: #341f1f;
+  }
+
+  /* Hero Section */
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    background: #fff;
+    box-shadow: 0 4px 20px rgb(209 73 91 / 0.1);
+  }
+  .hero-text {
+    max-width: 540px;
+    flex: 1 1 480px;
+    padding-right: 2rem;
+  }
+  .hero-text h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #d1495b;
+  }
+  .hero-text p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #555;
+  }
+  .hero-img {
+    flex: 1 1 480px;
+    text-align: center;
+  }
+  .hero-img img {
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  }
+
+  /* Section: Gallery & Halal Info */
+  .gallery {
+    max-width: 1100px;
+    margin: 4rem auto 3rem;
+    padding: 0 1.2rem;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 14px rgb(209 73 91 / 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgb(209 73 91 / 0.4);
+  }
+  .card img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    height: 220px;
+  }
+  .card-content {
+    padding: 1rem 1.2rem 1.4rem;
+  }
+  .card-content h3 {
+    margin: 0 0 0.4rem;
+    color: #d1495b;
+  }
+  .halal-label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #4caf50cc;
+    color: white;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 18px;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  }
+
+  /* Order Section */
+  .order-form {
+    max-width: 700px;
+    margin: 3rem auto 4rem;
+    padding: 0 1rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 2rem;
+  }
+  .order-form h2 {
+    color: #d1495b;
+    text-align: center;
+  }
+  .order-form label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+    font-weight: 600;
+  }
+  .order-form select,
+  .order-form input,
+  .order-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+  .order-form button {
+    background-color: #d1495b;
+    color: white;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+  }
+  .order-form button:hover {
+    background-color: #341f1f;
+  }
+  .success-message {
+    display: none;
+    margin-top: 1rem;
+    color: #4caf50;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* Contact Section */
+  footer {
+    background: #341f1f;
+    color: #f3f3f3;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  footer a {
+    color: #f9c784;
+    font-weight: 600;
+  }
+  footer a:hover {
+    color: #d1495b;
+  }
+  @media (max-width: 720px) {
+    .hero {
+      flex-direction: column;
+      padding: 2rem 1rem;
+    }
+    .hero-text {
+      padding: 0 0 2rem;
+      text-align: center;
+    }
+    nav button {
+      font-size: 0.9rem;
+      padding: 0.35rem 0.7rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo" aria-label="PurePoultry Direct logo">
+    <span class="feather" aria-hidden="true">🐔</span> PurePoultry Direct
+  </div>
+  <nav>
+    <button onclick="scrollToSection('home')">Home</button>
+    <button onclick="scrollToSection('order')">Order Here</button>
+    <button onclick="scrollToSection('about')">About</button>
+  </nav>
+</header>
+
+<section id="home" class="hero" aria-label="Welcome section with poultry image and intro">
+  <div class="hero-text">
+    <h1>Welcome to PurePoultry Direct</h1>
+    <p>Fresh, premium-quality raw poultry livestock sliced and delivered directly to your doorstep.</p>
+    <p>Guaranteed 100% Halal and ethically sourced for your peace of mind.</p>
+    <p>Order now to enjoy the best poultry experience with fast delivery and friendly customer service.</p>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1572393691253-b101baa0e85c?ixlib=rb-4.0.3&auto=format&fit=crop&w=750&q=80" alt="Fresh raw poultry livestock ready for slicing and delivery" />
+  </div>
+</section>
+
+<section id="gallery" class="gallery" aria-label="Gallery of poultry livestock images with Halal labels">
+  <article class="card">
+    <span class="halal-label">Halal</span>
+    <img src="https://images.unsplash.com/photo-1604908814013-f7f0ac754d09?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Fresh whole chicken poultry raw" />
+    <div class="card-content">
+      <h3>Whole Fresh Chicken</h3>
+      <p>Halal certified whole chicken, ready for slicing or your preferred cuts.</p>
+    </div>
+  </article>
+  <article class="card">
+    <span class="halal-label">Halal</span>
+    <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Raw chicken wings on wooden board" />
+    <div class="card-content">
+      <h3>Chicken Wings</h3>
+      <p>Juicy chicken wings fresh from farm, sliced and delivered halal certified.</p>
+    </div>
+  </article>
+  <article class="card">
+    <span class="halal-label">Halal</span>
+    <img src="https://images.unsplash.com/photo-1577985043715-c635aa993a5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Raw chicken thighs on kitchen surface" />
+    <div class="card-content">
+      <h3>Chicken Thighs</h3>
+      <p>Premium quality chicken thighs, halal and slicing ready for your recipes.</p>
+    </div>
+  </article>
+  <article class="card">
+    <span class="halal-label">Halal</span>
+    <img src="https://images.unsplash.com/photo-1601050691261-9b1a0f84073c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Raw chicken drumsticks served in bowl" />
+    <div class="card-content">
+      <h3>Chicken Drumsticks</h3>
+      <p>Tender chicken drumsticks, freshly sliced and fully halal certified.</p>
+    </div>
+  </article>
+  <article class="card">
+    <span class="halal-label">Halal</span>
+    <img src="https://images.unsplash.com/photo-1570819175702-4cd9fedb87ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Raw duck poultry" />
+    <div class="card-content">
+      <h3>Fresh Duck</h3>
+      <p>Succulent duck meat sourced raw and halal for a richer taste option.</p>
+    </div>
+  </article>
+  <article class="card">
+    <span class="halal-label">Halal</span>
+    <img src="https://images.unsplash.com/photo-1558021212-51b6ee18f2d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Raw turkey turkey poultry ready for slicing" />
+    <div class="card-content">
+      <h3>Fresh Turkey</h3>
+      <p>Large poultry option with premium turkey cuts, halal certified and fresh.</p>
+    </div>
+  </article>
+  <article class="card">
+    <span class="halal-label">Halal</span>
+    <img src="https://images.unsplash.com/photo-1604147706288-4f482e99c5ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Ground poultry meat" />
+    <div class="card-content">
+      <h3>Ground Meat</h3>
+      <p>Freshly minced poultry ground meat, halal certified and perfect for versatile cooking.</p>
+    </div>
+  </article>
+  <article class="card">
+    <span class="halal-label">Halal</span>
+    <img src="https://images.unsplash.com/photo-1590080877777-2da9c1594f0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Poultry grilling steaks ready to cook" />
+    <div class="card-content">
+      <h3>Grilling Steaks</h3>
+      <p>Premium poultry grilling steaks, juicy and halal certified, ideal for barbecue nights.</p>
+    </div>
+  </article>
+</section>
+
+<section id="order" class="order-form" aria-label="Order section with form">
+  <h2>Order Here</h2>
+  <form id="orderForm" onsubmit="handleOrder(event)">
+    <label for="meatType">Select Meat Type</label>
+    <select id="meatType" name="meatType" required>
+      <option value="" disabled selected>Select your option</option>
+      <option value="fillets">Fillets</option>
+      <option value="cubes">Cubed</option>
+      <option value="ground">Ground Meat</option>
+    </select>
+    
+    <label for="quantity">Quantity (kg)</label>
+    <input type="number" id="quantity" name="quantity" min="0.5" max="50" step="0.1" placeholder="e.g. 2.5" required>
+    
+    <label for="deliveryAddress">Delivery Address</label>
+    <textarea id="deliveryAddress" name="deliveryAddress" placeholder="Enter your full delivery address" required></textarea>
+    
+    <label for="contactPhone">Contact Phone</label>
+    <input type="text" id="contactPhone" name="contactPhone" placeholder="+1 555 123 4567" pattern="^\\+?[0-9\\s-]{7,15}$" required>
+    
+    <button type="submit">Place Order</button>
+    <div class="success-message" id="successMessage">Thank you! Your order has been placed. We will contact you shortly.</div>
+  </form>
+</section>
+
+<section id="about" style="max-width: 700px; margin: 3rem auto 4rem; padding: 0 1rem;" aria-label="About section">
+  <h2 style="color: #d1495b; text-align:center;">About PurePoultry Direct</h2>
+  <p style="text-align:center; font-size:1.1rem; color:#555;">
+    PurePoultry Direct is committed to sourcing and delivering only the freshest, halal-certified poultry livestock.  
+    We ensure ethical sourcing and hygienic slicing to provide you premium quality meat delivered at your convenience.
+  </p>
+</section>
+
+<footer id="contact" aria-label="Contact information for PurePoultry Direct">
+  <p>Need assistance or have questions? Contact us directly:</p>
+  <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a> | Email: <a href="mailto:support@purepoultrydirect.com">support@purepoultrydirect.com</a></p>
+  <p>© 2024 PurePoultry Direct - Fresh Halal Poultry Livestock</p>
+</footer>
+
+<script>
+  // Smooth scroll to sections by id
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // Handle order form submission
+  function handleOrder(event) {
+    event.preventDefault(); // Prevent default form submission
+    document.getElementById('successMessage').style.display = 'block'; // Show success message
+    document.getElementById('orderForm').reset(); // Reset the form
+  }
+</script>
+
+</body>
+</html>
